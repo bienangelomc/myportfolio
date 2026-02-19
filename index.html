@@ -110,12 +110,19 @@
       }
 
       .brand-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: var(--text);
-        opacity: 0.85;
-      }
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.25);
+  transition: background 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+.brand-dot.is-active {
+  background: #22c55e;
+  box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.15);
+  transform: scale(1.06);
+}
+
 
       .nav-toggle {
         display: none;
@@ -1492,6 +1499,27 @@
         const heroCard = document.querySelector(".hero-card.reveal");
         if (heroCard) heroCard.classList.add("is-in");
 
+            const dot = document.querySelector(".brand-dot");
+    const sections = Array.from(
+      document.querySelectorAll("#about,#services,#samples,#skills,#experience,#contact")
+    );
+
+    if (dot && "IntersectionObserver" in window && sections.length) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          const anyInView = entries.some((e) => e.isIntersecting);
+          dot.classList.toggle("is-active", anyInView);
+        },
+        {
+          root: null,
+          threshold: 0.12,
+          rootMargin: "-10% 0px -75% 0px",
+        }
+      );
+
+      sections.forEach((s) => io.observe(s));
+    }
+
         // Current year
         const yearEl = document.getElementById("year");
         if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -1533,3 +1561,4 @@
     </script>
   </body>
 </html>
+
