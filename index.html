@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Source: :contentReference[oaicite:0]{index=0} -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
@@ -26,6 +25,7 @@
         --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
         --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
         --dur: 650ms;
+        --green: #22c55e;
       }
 
       * {
@@ -110,19 +110,19 @@
       }
 
       .brand-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.25);
-  transition: background 220ms ease, transform 220ms ease, box-shadow 220ms ease;
-}
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.25);
+        transition: background 220ms ease, transform 220ms ease,
+          box-shadow 220ms ease;
+      }
 
-.brand-dot.is-active {
-  background: #22c55e;
-  box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.15);
-  transform: scale(1.06);
-}
-
+      .brand-dot.is-active {
+        background: var(--green);
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.15);
+        transform: scale(1.06);
+      }
 
       .nav-toggle {
         display: none;
@@ -339,6 +339,13 @@
       .btn.primary:hover {
         background: rgba(15, 23, 42, 1);
         box-shadow: 0 18px 34px rgba(15, 23, 42, 0.22);
+      }
+
+      .btn[disabled],
+      .btn.is-loading {
+        opacity: 0.65;
+        cursor: not-allowed;
+        transform: none !important;
       }
 
       /* Headings */
@@ -703,6 +710,141 @@
         }
       }
 
+      /* Modal */
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: none;
+      }
+      .modal.is-open {
+        display: block;
+      }
+      .modal__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.55);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        animation: fadeIn 220ms ease;
+      }
+      .modal__panel {
+        position: relative;
+        width: min(680px, calc(100% - 32px));
+        margin: 10vh auto 0;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        border-radius: 18px;
+        box-shadow: 0 22px 60px rgba(15, 23, 42, 0.22);
+        padding: 18px;
+        transform: translateY(10px) scale(0.985);
+        opacity: 0;
+        animation: popIn 260ms var(--ease-out) forwards;
+      }
+      .modal__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+        margin-bottom: 14px;
+      }
+      .modal__close {
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+        padding: 8px 10px;
+        cursor: pointer;
+        transition: transform 200ms ease, background 200ms ease;
+      }
+      .modal__close:hover {
+        transform: translateY(-1px);
+        background: #fff;
+      }
+      .modal__form {
+        display: grid;
+        gap: 12px;
+      }
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+      .label {
+        font-size: 13px;
+        color: rgba(71, 85, 105, 0.95);
+        font-weight: 650;
+      }
+      .input,
+      .textarea {
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        background: rgba(255, 255, 255, 0.92);
+        font: inherit;
+        color: inherit;
+        outline: none;
+        transition: border-color 200ms ease, box-shadow 200ms ease;
+      }
+      .input:focus,
+      .textarea:focus {
+        border-color: rgba(34, 197, 94, 0.55);
+        box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.14);
+      }
+      .textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+      .modal__actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        padding-top: 6px;
+      }
+      .modal__hint {
+        margin: 0;
+        font-size: 13px;
+        color: rgba(71, 85, 105, 0.95);
+      }
+      .modal__status {
+        display: none;
+        margin-top: 8px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        background: rgba(15, 23, 42, 0.03);
+        color: rgba(71, 85, 105, 0.95);
+        font-size: 13px;
+      }
+      .modal__status.is-show {
+        display: block;
+      }
+      .modal__status.success {
+        border-color: rgba(34, 197, 94, 0.25);
+        background: rgba(34, 197, 94, 0.08);
+      }
+      .modal__status.error {
+        border-color: rgba(239, 68, 68, 0.25);
+        background: rgba(239, 68, 68, 0.08);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes popIn {
+        to {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
+
       @media (min-width: 860px) {
         .hero-inner {
           grid-template-columns: 0.95fr 1.05fr;
@@ -756,6 +898,15 @@
         .hero-card::before {
           display: none;
         }
+
+        .modal__backdrop,
+        .modal__panel {
+          animation: none !important;
+        }
+        .modal__panel {
+          transform: none !important;
+          opacity: 1 !important;
+        }
       }
     </style>
   </head>
@@ -805,16 +956,15 @@
                   referrerpolicy="no-referrer"
                 />
                 <div class="img-fallback" aria-hidden="true">
-                  Image couldn’t load in this embed. If you’re viewing inside a
-                  builder preview, try Publish/Preview mode.
+                  Image couldn’t load in this embed. Try Publish/Preview mode.
                 </div>
               </div>
 
               <div class="hero-content">
                 <h1>Bienvenido Casimiro</h1>
                 <p class="headline">
-                  Automation Specialist • Data Quality & KPI Monitoring • Funnel Builder
-                  (Systeme.io)
+                  Automation Specialist • Data Quality &amp; KPI Monitoring •
+                  Funnel Builder (Systeme.io)
                 </p>
 
                 <div class="meta" role="group" aria-label="Contact details">
@@ -836,9 +986,7 @@
                     >
                     <span class="meta-pill"
                       ><strong>Email</strong>&nbsp;
-                      <a href="mailto:bienangelomc@gmail.com"
-                        >bienangelomc@gmail.com</a
-                      ></span
+                      <a href="#" data-open-email>bienangelomc@gmail.com</a></span
                     >
                   </div>
                   <div class="meta-row">
@@ -904,6 +1052,38 @@
                     />
                     Microsoft
                   </span>
+
+                  <span class="tool-pill" title="HTML">
+                    <img
+                      alt="HTML icon"
+                      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect rx='14' width='64' height='64' fill='%23ffffff'/><rect x='14' y='14' width='36' height='36' rx='12' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><path d='M24 40V24h4v6h8v-6h4v16h-4v-6h-8v6h-4z' fill='%230f172a' opacity='.75'/></svg>"
+                    />
+                    HTML
+                  </span>
+
+                  <span class="tool-pill" title="CSS">
+                    <img
+                      alt="CSS icon"
+                      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect rx='14' width='64' height='64' fill='%23ffffff'/><rect x='14' y='14' width='36' height='36' rx='12' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><path d='M40 26c-2-2-5-2-8-1-4 1-6 6-3 10 2 3 7 4 11 1' fill='none' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.75'/></svg>"
+                    />
+                    CSS
+                  </span>
+
+                  <span class="tool-pill" title="JavaScript">
+                    <img
+                      alt="JavaScript icon"
+                      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect rx='14' width='64' height='64' fill='%23ffffff'/><rect x='14' y='14' width='36' height='36' rx='12' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><path d='M28 25v12c0 2-1 3-3 3' fill='none' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.75'/><path d='M37 25v13c0 3-2 5-6 5' fill='none' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.75'/></svg>"
+                    />
+                    JavaScript
+                  </span>
+
+                  <span class="tool-pill" title="Python">
+                    <img
+                      alt="Python icon"
+                      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect rx='14' width='64' height='64' fill='%23ffffff'/><circle cx='32' cy='32' r='18' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><path d='M24 34c1-6 15-6 16 0' fill='none' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.75'/><circle cx='28' cy='28' r='2' fill='%230f172a' opacity='.7'/><circle cx='36' cy='28' r='2' fill='%230f172a' opacity='.7'/></svg>"
+                    />
+                    Python
+                  </span>
                 </div>
               </div>
             </div>
@@ -918,25 +1098,20 @@
             <div class="kicker">About</div>
             <h2>Automation + data accuracy + clean UI</h2>
             <p class="lead">
-              I build practical systems that reduce manual work and improve reporting:
-              funnels and automations in Systeme.io, plus Excel/Google Sheets solutions
-              for KPI tracking, data validation, quality checks, and monitoring.
+              I build practical systems that reduce manual work and improve
+              reporting: funnels and automations in Systeme.io, plus
+              Excel/Google Sheets solutions for KPI tracking, data validation,
+              quality checks, and monitoring.
             </p>
           </div>
 
           <div class="panel reveal delay-2">
-            <p
-              style="
-                margin: 0;
-                color: var(--muted);
-                font-size: 15px;
-                max-width: 78ch;
-              "
-            >
-              My focus is clarity and reliability—clean layouts, smooth user flows, and
-              automation that keeps your data organized. Whether it’s a VBA macro to speed
-              up reporting, an Apps Script to automate updates and alerts, or a funnel build,
-              I help you run faster with fewer errors.
+            <p style="margin: 0; color: var(--muted); font-size: 15px; max-width: 78ch;">
+              My focus is clarity and reliability—clean layouts, smooth user
+              flows, and automation that keeps your data organized. Whether it’s
+              a VBA macro to speed up reporting, an Apps Script to automate
+              updates and alerts, or a funnel build, I help you run faster with
+              fewer errors.
             </p>
           </div>
         </div>
@@ -949,8 +1124,8 @@
             <div class="kicker">Services</div>
             <h2>What I can build</h2>
             <p class="lead">
-              Balanced support across funnels, automations, and data workflows—simple,
-              modern, and easy to maintain.
+              Balanced support across funnels, automations, and data
+              workflows—simple, modern, and easy to maintain.
             </p>
           </div>
 
@@ -959,51 +1134,56 @@
               <div class="card reveal delay-1">
                 <h3>Systeme.io Funnel Building</h3>
                 <p>
-                  Pages, structure, products, checkout flow, email sequences, and
-                  launch-ready setup.
+                  Pages, structure, products, checkout flow, email sequences,
+                  and launch-ready setup.
                 </p>
               </div>
 
               <div class="card reveal delay-2">
                 <h3>Automation Setup</h3>
                 <p>
-                  Workflow automation for lead handling, tagging, follow-ups, and delivery
-                  systems.
+                  Workflow automation for lead handling, tagging, follow-ups,
+                  and delivery systems.
                 </p>
               </div>
 
               <div class="card reveal delay-2">
                 <h3>Excel Macros (VBA) Automation</h3>
                 <p>
-                  Macros to speed up reporting, reduce repetitive tasks, and standardize outputs.
+                  Macros to speed up reporting, reduce repetitive tasks, and
+                  standardize outputs.
                 </p>
               </div>
 
               <div class="card reveal delay-3">
                 <h3>Google Sheets Apps Script</h3>
                 <p>
-                  Automations, data syncing, scheduled triggers, and custom utilities.
+                  Automations, data syncing, scheduled triggers, and custom
+                  utilities.
                 </p>
               </div>
 
               <div class="card reveal delay-2">
                 <h3>Data Validation &amp; Quality Checks</h3>
                 <p>
-                  Rules, checks, and structures to catch errors early and keep datasets clean.
+                  Rules, checks, and structures to catch errors early and keep
+                  datasets clean.
                 </p>
               </div>
 
               <div class="card reveal delay-3">
                 <h3>KPI Dashboards &amp; Data Monitoring</h3>
                 <p>
-                  Simple monitoring and KPI views to spot trends and issues quickly.
+                  Simple monitoring and KPI views to spot trends and issues
+                  quickly.
                 </p>
               </div>
 
-              <div class="card reveal delay-2" style="grid-column: 1 / -1">
+              <div class="card reveal delay-2" style="grid-column: 1 / -1;">
                 <h3>Landing Page UI/UX + Design Support</h3>
                 <p>
-                  Clean layouts and design assets (Canva/Photoshop) with modern spacing and readability.
+                  Clean layouts and design assets (Canva/Photoshop) with modern
+                  spacing and readability.
                 </p>
               </div>
             </div>
@@ -1030,22 +1210,21 @@
             <div class="kicker">Samples</div>
             <h2>Live examples</h2>
             <p class="lead">
-              A quick look at real builds: a Systeme.io funnel sample and an Apps Script live report monitoring tool.
+              A quick look at real builds: a Systeme.io funnel sample and an
+              Apps Script live report monitoring tool.
             </p>
           </div>
 
           <div class="services-grid samples-grid">
             <div class="card reveal delay-1">
               <h3>Systeme.io Funnel Sample</h3>
-              <p>
-                Digital Wealth Academy funnel sample built using Systeme.io.
-              </p>
+              <p>Digital Wealth Academy funnel sample built using Systeme.io.</p>
               <div class="meta-mini">
                 <span class="tag">Funnel</span>
                 <span class="tag">Systeme.io</span>
                 <span class="tag">UI/UX</span>
               </div>
-              <div class="actions" style="margin-top: 14px">
+              <div class="actions" style="margin-top: 14px;">
                 <a
                   class="btn primary"
                   href="https://www.bgcreativesdgt.com/digital-wealth-academy-remastered"
@@ -1059,14 +1238,15 @@
             <div class="card reveal delay-2">
               <h3>Apps Script Live Report Monitoring</h3>
               <p>
-                Attendance monitoring + daily reporting with a custom date selector (live web app).
+                Attendance monitoring + daily reporting with a custom date
+                selector (live web app).
               </p>
               <div class="meta-mini">
                 <span class="tag">Apps Script</span>
                 <span class="tag">Monitoring</span>
                 <span class="tag">Daily Reports</span>
               </div>
-              <div class="actions" style="margin-top: 14px">
+              <div class="actions" style="margin-top: 14px;">
                 <a
                   class="btn primary"
                   href="https://script.google.com/macros/s/AKfycbxecFQ63vzy6BwurBnwoN2UYqSHQvB3k9_j8tYPJ1WXZ3LrDX8-T6ElqlGB4I4Pc24r/exec"
@@ -1087,7 +1267,8 @@
             <div class="kicker">Skills</div>
             <h2>Tools &amp; capabilities</h2>
             <p class="lead">
-              Focused skills for automation, data quality, KPI monitoring, and clean front-end execution.
+              Focused skills for automation, data quality, KPI monitoring, and
+              clean front-end execution.
             </p>
           </div>
 
@@ -1128,7 +1309,7 @@
               </ul>
             </div>
 
-            <div class="skill-group reveal delay-2" style="grid-column: 1 / -1">
+            <div class="skill-group reveal delay-2" style="grid-column: 1 / -1;">
               <h3>Ops/IT</h3>
               <ul class="skill-list">
                 <li>Hardware &amp; Software Troubleshooting</li>
@@ -1147,7 +1328,8 @@
             <div class="kicker">Experience</div>
             <h2>Work history</h2>
             <p class="lead">
-              Operations, IT, and systems roles with a focus on accuracy, reporting, automation, and execution.
+              Operations, IT, and systems roles with a focus on accuracy,
+              reporting, automation, and execution.
             </p>
           </div>
 
@@ -1160,19 +1342,25 @@
               <div class="role-company">ProCast, Inc. — Quezon City</div>
               <ul>
                 <li>
-                  Validated raw data submitted by on-ground manpower per merchant/day to ensure completeness based on report requirements.
+                  Validated raw data submitted by on-ground manpower per
+                  merchant/day to ensure completeness based on report
+                  requirements.
                 </li>
                 <li>
-                  Checked target lists vs. actual submissions to verify timely compliance per merchant.
+                  Checked target lists vs. actual submissions to verify timely
+                  compliance per merchant.
                 </li>
                 <li>
-                  Coordinated with Data Lead, Operations Lead, and manpower to resolve missing data points (daily follow-ups).
+                  Coordinated with Data Lead, Operations Lead, and manpower to
+                  resolve missing data points (daily follow-ups).
                 </li>
                 <li>
-                  Provided summary lists of recurring non-compliance for evaluation reporting.
+                  Provided summary lists of recurring non-compliance for
+                  evaluation reporting.
                 </li>
                 <li>
-                  Assisted with validation/checking of other assigned raw data or reports as needed.
+                  Assisted with validation/checking of other assigned raw data
+                  or reports as needed.
                 </li>
               </ul>
             </div>
@@ -1185,25 +1373,32 @@
               <div class="role-company">ProCast, Inc. — Quezon City</div>
               <ul>
                 <li>
-                  Ensured quality engagement with at least 20 merchants/day within assigned areas; adapted to project location changes.
+                  Ensured quality engagement with at least 20 merchants/day
+                  within assigned areas; adapted to project location changes.
                 </li>
                 <li>
-                  Conducted merchant visits following BCP/SOP while distributing merchandising and terminal accessories.
+                  Conducted merchant visits following BCP/SOP while distributing
+                  merchandising and terminal accessories.
                 </li>
                 <li>
-                  Maintained KPI targets: 100% availability/usability, 95% visibility, 50% “Perfect Store” implementation.
+                  Maintained KPI targets: 100% availability/usability, 95%
+                  visibility, 50% “Perfect Store” implementation.
                 </li>
                 <li>
-                  Ensured 100% daily submission of accurate reports and merchant photos via Google Forms (per merchant).
+                  Ensured 100% daily submission of accurate reports and merchant
+                  photos via Google Forms (per merchant).
                 </li>
                 <li>
-                  Provided daily updates in group chats using standard templates with complete photo documentation.
+                  Provided daily updates in group chats using standard templates
+                  with complete photo documentation.
                 </li>
                 <li>
-                  Promoted merchant campaigns and monitored compliance; supported escalation via customer support channels.
+                  Promoted merchant campaigns and monitored compliance;
+                  supported escalation via customer support channels.
                 </li>
                 <li>
-                  Performed basic on-site troubleshooting for terminal devices based on company training.
+                  Performed basic on-site troubleshooting for terminal devices
+                  based on company training.
                 </li>
               </ul>
             </div>
@@ -1216,19 +1411,24 @@
               <div class="role-company">Freelance — Quezon City</div>
               <ul>
                 <li>
-                  Designed and built high-converting sales funnels for digital products and online businesses.
+                  Designed and built high-converting sales funnels for digital
+                  products and online businesses.
                 </li>
                 <li>
-                  Created landing pages, opt-in pages, sales pages, and automated email sequences.
+                  Created landing pages, opt-in pages, sales pages, and
+                  automated email sequences.
                 </li>
                 <li>
-                  Integrated payment gateways, email marketing systems, and automation workflows.
+                  Integrated payment gateways, email marketing systems, and
+                  automation workflows.
                 </li>
                 <li>
-                  Optimized funnel performance through testing and conversion improvements.
+                  Optimized funnel performance through testing and conversion
+                  improvements.
                 </li>
                 <li>
-                  Managed end-to-end funnel setup from strategy and design to automation and launch.
+                  Managed end-to-end funnel setup from strategy and design to
+                  automation and launch.
                 </li>
               </ul>
             </div>
@@ -1241,19 +1441,24 @@
               <div class="role-company">ACLC College — Quezon City</div>
               <ul>
                 <li>
-                  Supervised and assisted students during laboratory activities; ensured proper procedures and safety compliance.
+                  Supervised and assisted students during laboratory activities;
+                  ensured proper procedures and safety compliance.
                 </li>
                 <li>
-                  Maintained laboratory equipment, tools, and materials to support academic activities.
+                  Maintained laboratory equipment, tools, and materials to
+                  support academic activities.
                 </li>
                 <li>
-                  Prepared laboratory materials and assisted instructors during practical sessions.
+                  Prepared laboratory materials and assisted instructors during
+                  practical sessions.
                 </li>
                 <li>
-                  Designed and created social media posts for school activities and announcements.
+                  Designed and created social media posts for school activities
+                  and announcements.
                 </li>
                 <li>
-                  Managed and updated school social media platforms to improve engagement and visibility.
+                  Managed and updated school social media platforms to improve
+                  engagement and visibility.
                 </li>
               </ul>
             </div>
@@ -1263,22 +1468,29 @@
                 <div class="role-title">IT Staff</div>
                 <div class="role-meta">2019 – 2021</div>
               </div>
-              <div class="role-company">Filkohayes Services Inc. — Quezon City</div>
+              <div class="role-company">
+                Filkohayes Services Inc. — Quezon City
+              </div>
               <ul>
                 <li>
-                  Provided overall IT support including system maintenance, troubleshooting, and network management.
+                  Provided overall IT support including system maintenance,
+                  troubleshooting, and network management.
                 </li>
                 <li>
-                  Designed, developed, and maintained the company website with an online medical equipment catalog.
+                  Designed, developed, and maintained the company website with
+                  an online medical equipment catalog.
                 </li>
                 <li>
-                  Updated product listings (specs/images) to ensure accurate online information.
+                  Updated product listings (specs/images) to ensure accurate
+                  online information.
                 </li>
                 <li>
-                  Assisted in preparing technical documents for bidding processes.
+                  Assisted in preparing technical documents for bidding
+                  processes.
                 </li>
                 <li>
-                  Set up IT systems and provided technical support during conventions, events, and product demonstrations.
+                  Set up IT systems and provided technical support during
+                  conventions, events, and product demonstrations.
                 </li>
               </ul>
             </div>
@@ -1290,7 +1502,10 @@
               </div>
               <div class="role-company">Wuhan Fiberhomes</div>
               <ul>
-                <li>Supported data entry tasks with attention to accuracy and completeness.</li>
+                <li>
+                  Supported data entry tasks with attention to accuracy and
+                  completeness.
+                </li>
               </ul>
             </div>
 
@@ -1299,13 +1514,17 @@
                 <div class="role-title">Mapping Assistant</div>
                 <div class="role-meta">2018 – 2019</div>
               </div>
-              <div class="role-company">Prime@Technology Specialists, Inc. — Quezon City</div>
+              <div class="role-company">
+                Prime@Technology Specialists, Inc. — Quezon City
+              </div>
               <ul>
                 <li>
-                  Assisted in collecting, analyzing, and updating geographic/spatial data using mapping software.
+                  Assisted in collecting, analyzing, and updating
+                  geographic/spatial data using mapping software.
                 </li>
                 <li>
-                  Supported map production and data entry; ensured accuracy of GIS databases.
+                  Supported map production and data entry; ensured accuracy of
+                  GIS databases.
                 </li>
               </ul>
             </div>
@@ -1318,7 +1537,8 @@
               <div class="role-company">MDI Company — Quezon City</div>
               <ul>
                 <li>
-                  Upgraded computers, installed OS and required software, and configured network connectivity to the server.
+                  Upgraded computers, installed OS and required software, and
+                  configured network connectivity to the server.
                 </li>
               </ul>
             </div>
@@ -1333,13 +1553,14 @@
             <div class="kicker">Contact</div>
             <h2>Let’s build your system</h2>
             <p class="lead">
-              Funnels, automation, reporting macros, KPI monitoring, and data quality—ready when you are.
+              Funnels, automation, reporting macros, KPI monitoring, and data
+              quality—ready when you are.
             </p>
           </div>
 
           <div class="contact-card reveal delay-2">
             <div class="contact-actions">
-              <a class="btn primary" href="mailto:bienangelomc@gmail.com">Email</a>
+              <a class="btn primary" href="#" data-open-email>Email</a>
               <a class="btn" href="tel:+639062081150">Call</a>
               <a
                 class="btn"
@@ -1360,7 +1581,7 @@
             >
               <div>
                 <strong style="color: var(--text); font-weight: 650">Email:</strong>
-                <a href="mailto:bienangelomc@gmail.com">bienangelomc@gmail.com</a>
+                <a href="#" data-open-email>bienangelomc@gmail.com</a>
               </div>
               <div>
                 <strong style="color: var(--text); font-weight: 650">Phone:</strong>
@@ -1372,7 +1593,7 @@
                   href="https://www.bgcreativesdgt.com/"
                   target="_blank"
                   rel="noopener"
-                  >www.bgcreativesdgt.com/funnel-service</a
+                  >www.bgcreativesdgt.com</a
                 >
               </div>
               <div>
@@ -1384,14 +1605,106 @@
 
           <div class="foot">
             <div class="wrap" style="padding: 0">
-              <span>
-                © <span id="year"></span> Bienvenido Casimiro. Built for Systeme.io.
-              </span>
+              <span>© <span id="year"></span> Bienvenido Casimiro.</span>
             </div>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- EMAIL MODAL -->
+    <div class="modal" id="emailModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-email></div>
+
+      <div
+        class="modal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="emailTitle"
+      >
+        <div class="modal__header">
+          <div>
+            <div class="kicker" style="margin: 0 0 6px">Email</div>
+            <h2 id="emailTitle" style="margin: 0; font-size: 20px">
+              Send me a message
+            </h2>
+          </div>
+          <button
+            class="modal__close"
+            type="button"
+            aria-label="Close"
+            data-close-email
+          >
+            ✕
+          </button>
+        </div>
+
+        <form class="modal__form" id="emailForm" novalidate>
+          <div class="field">
+            <label class="label" for="fromName">Your name</label>
+            <input
+              class="input"
+              id="fromName"
+              name="fromName"
+              type="text"
+              placeholder="Juan Dela Cruz"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label class="label" for="fromEmail">Your email</label>
+            <input
+              class="input"
+              id="fromEmail"
+              name="fromEmail"
+              type="email"
+              placeholder="you@email.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label class="label" for="subject">Subject</label>
+            <input
+              class="input"
+              id="subject"
+              name="subject"
+              type="text"
+              placeholder="Project inquiry"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label class="label" for="message">Message</label>
+            <textarea
+              class="textarea"
+              id="message"
+              name="message"
+              rows="6"
+              placeholder="Tell me what you need..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="modal__actions">
+            <button class="btn" type="button" data-close-email>Cancel</button>
+            <button class="btn primary" type="submit" id="sendBtn">
+              Send Message
+            </button>
+          </div>
+
+          <div class="modal__status" id="formStatus" aria-live="polite"></div>
+
+          <p class="modal__hint">
+            Sends directly from this page (no email app needed).
+          </p>
+        </form>
+      </div>
+    </div>
 
     <script>
       (function () {
@@ -1425,7 +1738,6 @@
         });
 
         // Google Drive image reliability:
-        // Try multiple sources (thumbnail -> uc view -> docs uc -> googleusercontent).
         function setFallbackChain(imgEl, id) {
           let tried = 0;
           const sources = [
@@ -1464,7 +1776,7 @@
           if (id) setFallbackChain(img, id);
         });
 
-        // Modern scroll reveal + hero shimmer trigger
+        // Scroll reveal
         const reduceMotion =
           window.matchMedia &&
           window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1477,12 +1789,6 @@
               entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                   entry.target.classList.add("is-in");
-
-                  // Trigger shimmer for hero card only
-                  if (entry.target.classList.contains("hero-card")) {
-                    entry.target.classList.add("is-in");
-                  }
-
                   obs.unobserve(entry.target);
                 }
               });
@@ -1495,30 +1801,28 @@
           items.forEach((el) => el.classList.add("is-in"));
         }
 
-        // Ensure hero shimmer triggers even if already in view at load
+        // Ensure hero shimmer triggers
         const heroCard = document.querySelector(".hero-card.reveal");
         if (heroCard) heroCard.classList.add("is-in");
 
-            const dot = document.querySelector(".brand-dot");
-    const sections = Array.from(
-      document.querySelectorAll("#about,#services,#samples,#skills,#experience,#contact")
-    );
+        // Brand dot active when scrolling sections
+        const dot = document.querySelector(".brand-dot");
+        const sections = Array.from(
+          document.querySelectorAll(
+            "#about,#services,#samples,#skills,#experience,#contact"
+          )
+        );
 
-    if (dot && "IntersectionObserver" in window && sections.length) {
-      const io = new IntersectionObserver(
-        (entries) => {
-          const anyInView = entries.some((e) => e.isIntersecting);
-          dot.classList.toggle("is-active", anyInView);
-        },
-        {
-          root: null,
-          threshold: 0.12,
-          rootMargin: "-10% 0px -75% 0px",
+        if (dot && "IntersectionObserver" in window && sections.length) {
+          const dotIO = new IntersectionObserver(
+            (entries) => {
+              const anyInView = entries.some((e) => e.isIntersecting);
+              dot.classList.toggle("is-active", anyInView);
+            },
+            { root: null, threshold: 0.12, rootMargin: "-10% 0px -75% 0px" }
+          );
+          sections.forEach((s) => dotIO.observe(s));
         }
-      );
-
-      sections.forEach((s) => io.observe(s));
-    }
 
         // Current year
         const yearEl = document.getElementById("year");
@@ -1557,10 +1861,133 @@
             setTimeout(() => scrollToHash(location.hash), 0);
           }
         }
+
+        // EMAIL MODAL + DIRECT SEND (FormSubmit AJAX)
+        const modal = document.getElementById("emailModal");
+        const openBtns = document.querySelectorAll("[data-open-email]");
+        const closeBtns = document.querySelectorAll("[data-close-email]");
+        const form = document.getElementById("emailForm");
+        const sendBtn = document.getElementById("sendBtn");
+        const statusEl = document.getElementById("formStatus");
+
+        const TO_EMAIL = "bienangelomc@gmail.com";
+        const ENDPOINT = "https://formsubmit.co/ajax/" + encodeURIComponent(TO_EMAIL);
+
+        function openModal() {
+          if (!modal) return;
+          modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+          if (statusEl) {
+            statusEl.className = "modal__status";
+            statusEl.textContent = "";
+          }
+          setTimeout(() => document.getElementById("fromName")?.focus(), 0);
+        }
+
+        function closeModal() {
+          if (!modal) return;
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        }
+
+        openBtns.forEach((b) =>
+          b.addEventListener("click", (e) => {
+            e.preventDefault();
+            openModal();
+          })
+        );
+
+        closeBtns.forEach((b) => b.addEventListener("click", closeModal));
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && modal?.classList.contains("is-open")) closeModal();
+        });
+
+        function setStatus(type, text) {
+          if (!statusEl) return;
+          statusEl.className = "modal__status is-show " + (type || "");
+          statusEl.textContent = text;
+        }
+
+        function setLoading(isLoading) {
+          if (!sendBtn) return;
+          if (isLoading) {
+            sendBtn.classList.add("is-loading");
+            sendBtn.setAttribute("disabled", "disabled");
+            sendBtn.textContent = "Sending...";
+          } else {
+            sendBtn.classList.remove("is-loading");
+            sendBtn.removeAttribute("disabled");
+            sendBtn.textContent = "Send Message";
+          }
+        }
+
+        form?.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById("fromName")?.value.trim();
+          const email = document.getElementById("fromEmail")?.value.trim();
+          const subject = document.getElementById("subject")?.value.trim();
+          const message = document.getElementById("message")?.value.trim();
+
+          if (!name || !email || !subject || !message) {
+            setStatus("error", "Please complete all fields.");
+            return;
+          }
+
+          setLoading(true);
+          setStatus("", "Sending...");
+
+          try {
+            const payload = {
+              name: name,
+              email: email,
+              subject: subject,
+              message: message,
+              _captcha: "false",
+              _template: "table",
+            };
+
+            const res = await fetch(ENDPOINT, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify(payload),
+            });
+
+            if (!res.ok) throw new Error("Request failed");
+
+            setStatus("success", "Message sent! Thank you — I’ll get back to you soon.");
+            form.reset();
+
+            setTimeout(() => {
+              closeModal();
+            }, 1400);
+          } catch (err) {
+            // Fallback to mailto if blocked
+            setStatus(
+              "error",
+              "Couldn’t send directly (blocked by browser/network). Opening email app instead..."
+            );
+
+            const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+            const mailto = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(
+              subject
+            )}&body=${encodeURIComponent(body)}`;
+
+            setTimeout(() => {
+              window.location.href = mailto;
+              closeModal();
+            }, 900);
+          } finally {
+            setLoading(false);
+          }
+        });
       })();
     </script>
   </body>
 </html>
-
-
-
