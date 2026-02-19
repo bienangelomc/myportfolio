@@ -1,0 +1,1535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Source: :contentReference[oaicite:0]{index=0} -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Bienvenido Casimiro — Automations, Data Quality & Funnels (Systeme.io)"
+    />
+    <title>Bienvenido Casimiro | Portfolio</title>
+
+    <style>
+      :root {
+        --bg: #f6f7f8;
+        --surface: #ffffff;
+        --text: #0f172a;
+        --muted: #475569;
+        --line: rgba(15, 23, 42, 0.1);
+        --shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+        --shadow-soft: 0 10px 22px rgba(15, 23, 42, 0.1);
+        --radius: 18px;
+        --radius-lg: 22px;
+        --max: 1100px;
+        --pad: clamp(18px, 3.5vw, 34px);
+        --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        --dur: 650ms;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        background: radial-gradient(
+            1200px 600px at 20% 0%,
+            rgba(15, 23, 42, 0.03),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 500px at 100% 20%,
+            rgba(15, 23, 42, 0.025),
+            transparent 60%
+          ),
+          var(--bg);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 var(--pad);
+      }
+
+      section {
+        padding: clamp(42px, 7vw, 86px) 0;
+      }
+
+      /* Navbar */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(246, 247, 248, 0.76);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px var(--pad);
+        max-width: var(--max);
+        margin: 0 auto;
+        flex-wrap: wrap;
+        gap: 10px 12px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 850;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+
+      .brand-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--text);
+        opacity: 0.85;
+      }
+
+      .nav-toggle {
+        display: none;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.65);
+        border-radius: 12px;
+        padding: 8px 10px;
+        font-size: 14px;
+        color: var(--text);
+        cursor: pointer;
+        transition: transform 240ms var(--ease), background 240ms var(--ease);
+      }
+
+      .nav-toggle:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.92);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+        color: var(--muted);
+        padding: 8px 10px;
+        border-radius: 999px;
+        transition: background 240ms var(--ease), transform 240ms var(--ease),
+          color 240ms var(--ease);
+      }
+
+      .nav-links a:hover {
+        background: rgba(15, 23, 42, 0.06);
+        color: var(--text);
+        transform: translateY(-1px);
+      }
+
+      @media (max-width: 680px) {
+        .nav-toggle {
+          display: inline-flex;
+        }
+
+        .nav-links {
+          display: none;
+          width: 100%;
+          padding: 10px 0 2px;
+          gap: 6px;
+        }
+
+        .nav.is-open .nav-links {
+          display: flex;
+        }
+
+        .nav-links a {
+          padding: 10px 12px;
+          border: 1px solid var(--line);
+          background: rgba(255, 255, 255, 0.7);
+        }
+      }
+
+      /* Hero */
+      .hero {
+        padding-top: clamp(34px, 5vw, 52px);
+      }
+
+      .hero-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        transform: translateZ(0);
+      }
+
+      .hero-inner {
+        padding: var(--pad);
+        display: grid;
+        gap: clamp(18px, 3.5vw, 34px);
+        align-items: center;
+      }
+
+      .hero-media {
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: #fff;
+        position: relative;
+        padding: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 260px;
+      }
+
+      /* Do not crop — show full image */
+      .hero-media img {
+        width: 100%;
+        height: auto;
+        max-height: 520px;
+        object-fit: contain;
+        border-radius: 14px;
+        background: #fff;
+      }
+
+      .img-fallback {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+        background: linear-gradient(
+          180deg,
+          rgba(15, 23, 42, 0.03),
+          rgba(15, 23, 42, 0.01)
+        );
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .hero-content h1 {
+        margin: 0 0 6px;
+        font-size: clamp(28px, 4.2vw, 44px);
+        letter-spacing: -0.03em;
+        line-height: 1.12;
+      }
+
+      .hero-content .headline {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: clamp(15px, 1.7vw, 18px);
+      }
+
+      .meta {
+        display: grid;
+        gap: 10px;
+        padding: 14px;
+        background: rgba(15, 23, 42, 0.03);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        align-items: center;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .meta-row strong {
+        color: var(--text);
+        font-weight: 650;
+      }
+
+      .meta-pill {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--muted);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text);
+        font-weight: 750;
+        font-size: 14px;
+        cursor: pointer;
+        box-shadow: 0 10px 18px rgba(15, 23, 42, 0.06);
+        transition: transform 220ms var(--ease), background 220ms var(--ease),
+          box-shadow 220ms var(--ease), border-color 220ms var(--ease);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        background: #fff;
+        box-shadow: var(--shadow-soft);
+        border-color: rgba(15, 23, 42, 0.16);
+      }
+
+      .btn.primary {
+        background: rgba(15, 23, 42, 0.96);
+        color: #fff;
+        border-color: rgba(15, 23, 42, 0.96);
+        box-shadow: 0 14px 26px rgba(15, 23, 42, 0.18);
+      }
+
+      .btn.primary:hover {
+        background: rgba(15, 23, 42, 1);
+        box-shadow: 0 18px 34px rgba(15, 23, 42, 0.22);
+      }
+
+      /* Headings */
+      .section-head {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+
+      .kicker {
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(71, 85, 105, 0.85);
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(20px, 2.7vw, 28px);
+        letter-spacing: -0.02em;
+      }
+
+      .lead {
+        margin: 0;
+        color: var(--muted);
+        max-width: 72ch;
+        font-size: 15px;
+      }
+
+      /* Cards */
+      .card {
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 18px;
+        box-shadow: 0 12px 22px rgba(15, 23, 42, 0.06);
+        transform: translateZ(0);
+        transition: transform 260ms var(--ease-out),
+          box-shadow 260ms var(--ease-out), background 260ms var(--ease-out),
+          border-color 260ms var(--ease-out);
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 34px rgba(15, 23, 42, 0.1);
+        border-color: rgba(15, 23, 42, 0.16);
+        background: #fff;
+      }
+
+      .card h3 {
+        margin: 0 0 6px;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .card .meta-mini {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag {
+        font-size: 12px;
+        color: rgba(71, 85, 105, 0.95);
+        border: 1px solid var(--line);
+        background: rgba(15, 23, 42, 0.02);
+        padding: 6px 10px;
+        border-radius: 999px;
+      }
+
+      /* About panel */
+      .panel {
+        padding: 20px;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 12px 26px rgba(15, 23, 42, 0.06);
+      }
+
+      /* Tools row (icons) */
+      .tools-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        padding: 12px;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.8);
+        margin-top: 16px;
+      }
+
+      .tool-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.88);
+        color: var(--muted);
+        font-size: 13px;
+        box-shadow: 0 10px 16px rgba(15, 23, 42, 0.05);
+        transition: transform 260ms var(--ease-out),
+          box-shadow 260ms var(--ease-out), border-color 260ms var(--ease-out);
+      }
+
+      .tool-pill:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 26px rgba(15, 23, 42, 0.1);
+        border-color: rgba(15, 23, 42, 0.16);
+      }
+
+      .tool-pill img {
+        width: 20px;
+        height: 20px;
+        border-radius: 6px;
+        flex: 0 0 auto;
+      }
+
+      /* Services */
+      .services-split {
+        display: grid;
+        gap: clamp(14px, 3vw, 24px);
+      }
+
+      .services-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .feature-img {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: #fff;
+        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+        position: relative;
+        transform: translateZ(0);
+      }
+
+      .feature-img img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        aspect-ratio: 16 / 9;
+        background: #fff;
+      }
+
+      .feature-caption {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(15, 23, 42, 0.55);
+        color: #fff;
+        font-size: 12px;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+
+      /* Skills */
+      .skills {
+        display: grid;
+        gap: 14px;
+      }
+
+      .skill-group {
+        display: grid;
+        gap: 10px;
+        padding: 18px;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 12px 22px rgba(15, 23, 42, 0.06);
+        transform: translateZ(0);
+        transition: transform 260ms var(--ease-out),
+          box-shadow 260ms var(--ease-out), border-color 260ms var(--ease-out);
+      }
+
+      .skill-group:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 34px rgba(15, 23, 42, 0.1);
+        border-color: rgba(15, 23, 42, 0.16);
+      }
+
+      .skill-group h3 {
+        margin: 0;
+        font-size: 15px;
+        letter-spacing: -0.01em;
+      }
+
+      .skill-list {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .skill-list li {
+        margin: 4px 0;
+      }
+
+      /* Experience */
+      .timeline {
+        display: grid;
+        gap: 12px;
+      }
+
+      .role {
+        padding: 18px;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 12px 22px rgba(15, 23, 42, 0.06);
+        transform: translateZ(0);
+        transition: transform 260ms var(--ease-out),
+          box-shadow 260ms var(--ease-out), border-color 260ms var(--ease-out);
+      }
+
+      .role:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 34px rgba(15, 23, 42, 0.1);
+        border-color: rgba(15, 23, 42, 0.16);
+      }
+
+      .role-top {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px 14px;
+        margin-bottom: 6px;
+      }
+
+      .role-title {
+        font-weight: 850;
+        letter-spacing: -0.01em;
+      }
+
+      .role-meta {
+        color: var(--muted);
+        font-size: 13px;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .role-company {
+        color: var(--muted);
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .role ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .role li {
+        margin: 6px 0;
+      }
+
+      /* Contact */
+      .contact-card {
+        display: grid;
+        gap: 14px;
+        padding: 18px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: var(--shadow);
+        transform: translateZ(0);
+      }
+
+      .contact-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .foot {
+        padding: 28px 0 40px;
+        color: rgba(71, 85, 105, 0.9);
+        font-size: 13px;
+      }
+
+      /* Modern reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+        filter: blur(6px);
+        transition: opacity var(--dur) var(--ease-out),
+          transform var(--dur) var(--ease-out),
+          filter var(--dur) var(--ease-out);
+        will-change: opacity, transform, filter;
+      }
+
+      .reveal.is-in {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+
+      .reveal.delay-1 {
+        transition-delay: 80ms;
+      }
+
+      .reveal.delay-2 {
+        transition-delay: 160ms;
+      }
+
+      .reveal.delay-3 {
+        transition-delay: 240ms;
+      }
+
+      /* Subtle shimmer for hero card */
+      .hero-card::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(
+          120deg,
+          transparent 0%,
+          rgba(15, 23, 42, 0.06) 25%,
+          transparent 50%,
+          rgba(15, 23, 42, 0.04) 70%,
+          transparent 100%
+        );
+        transform: translateX(-60%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .hero-card.is-in::before {
+        opacity: 0.55;
+        animation: shimmer 1.2s var(--ease-out) 1;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-60%);
+          opacity: 0;
+        }
+        15% {
+          opacity: 0.45;
+        }
+        100% {
+          transform: translateX(60%);
+          opacity: 0;
+        }
+      }
+
+      @media (min-width: 860px) {
+        .hero-inner {
+          grid-template-columns: 0.95fr 1.05fr;
+        }
+
+        .services-split {
+          grid-template-columns: 1.05fr 0.95fr;
+          align-items: start;
+        }
+
+        .services-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .skills {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .samples-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        * {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+          filter: none;
+        }
+
+        .card:hover,
+        .role:hover,
+        .btn:hover,
+        .tool-pill:hover,
+        .skill-group:hover {
+          transform: none;
+        }
+
+        .hero-card::before {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="nav" id="topNav">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Go to top">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span>Bienvenido Casimiro</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          id="navToggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#samples">Samples</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="wrap">
+          <div class="hero-card reveal">
+            <div class="hero-inner">
+              <div class="hero-media" aria-label="Profile photo">
+                <img
+                  class="js-drive-img"
+                  data-id="14hUYPIasm6lgp_5m7wS9pSB5RnhBSu5P"
+                  src="https://drive.google.com/thumbnail?id=14hUYPIasm6lgp_5m7wS9pSB5RnhBSu5P&sz=w2400"
+                  alt="Bienvenido Casimiro profile photo"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="img-fallback" aria-hidden="true">
+                  Image couldn’t load in this embed. If you’re viewing inside a
+                  builder preview, try Publish/Preview mode.
+                </div>
+              </div>
+
+              <div class="hero-content">
+                <h1>Bienvenido Casimiro</h1>
+                <p class="headline">
+                  Automation Specialist • Data Quality & KPI Monitoring • Funnel Builder
+                  (Systeme.io)
+                </p>
+
+                <div class="meta" role="group" aria-label="Contact details">
+                  <div class="meta-row">
+                    <span class="meta-pill"
+                      ><strong>Website</strong>&nbsp;
+                      <a
+                        href="https://www.bgcreativesdgt.com/funnel-service"
+                        target="_blank"
+                        rel="noopener"
+                        >www.bgcreativesdgt.com/funnel-service</a
+                      ></span
+                    >
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-pill"
+                      ><strong>Phone</strong>&nbsp;
+                      <a href="tel:+639062081150">+63 906 208 1150</a></span
+                    >
+                    <span class="meta-pill"
+                      ><strong>Email</strong>&nbsp;
+                      <a href="mailto:bienangelomc@gmail.com"
+                        >bienangelomc@gmail.com</a
+                      ></span
+                    >
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-pill"
+                      ><strong>Location</strong>&nbsp; Sitio Samasa, Pila-Pila
+                      Binangonan Rizal</span
+                    >
+                  </div>
+                </div>
+
+                <div class="actions">
+                  <a class="btn primary" href="#services">View Services</a>
+                  <a class="btn" href="#samples">View Samples</a>
+                  <a class="btn" href="#contact">Contact</a>
+                </div>
+
+                <!-- ICONS -->
+                <div class="tools-row" aria-label="Tools icons">
+                  <span class="tool-pill" title="Google Apps Script">
+                    <img
+                      alt="Google Apps Script icon"
+                      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect rx='14' width='64' height='64' fill='%23ffffff'/><path d='M20 18h18l6 6v22a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6V24a6 6 0 0 1 6-6z' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><path d='M38 18v8h8' fill='none' stroke='%230f172a' stroke-opacity='.18'/><path d='M23 40c2.6-7.2 14.4-7.2 17 0' fill='none' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.75'/><circle cx='27' cy='33' r='2' fill='%230f172a' opacity='.7'/><circle cx='37' cy='33' r='2' fill='%230f172a' opacity='.7'/></svg>"
+                    />
+                    Apps Script
+                  </span>
+
+                  <span class="tool-pill" title="Canva">
+                    <img
+                      alt="Canva icon"
+                      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect rx='14' width='64' height='64' fill='%23ffffff'/><circle cx='32' cy='32' r='18' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><path d='M41 25c-2-2-5.8-2-8.2-.7-3.4 1.8-5.3 6.1-3.7 9.9 1.7 4 6.5 6 10.7 3.6' fill='none' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.75'/></svg>"
+                    />
+                    Canva
+                  </span>
+
+                  <span class="tool-pill" title="Photoshop">
+                    <img
+                      alt="Photoshop icon"
+                      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect rx='14' width='64' height='64' fill='%23ffffff'/><rect x='14' y='14' width='36' height='36' rx='10' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><path d='M24 42V22h8.5c4 0 6.5 2.3 6.5 6 0 3.7-2.6 6.2-6.9 6.2H29' fill='none' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.75'/><path d='M38 42c-1.8 0-3.2-.7-4.1-1.6' fill='none' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.75'/></svg>"
+                    />
+                    Photoshop
+                  </span>
+
+                  <span class="tool-pill" title="Systeme.io">
+                    <img
+                      alt="Systeme.io icon"
+                      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect rx='14' width='64' height='64' fill='%23ffffff'/><path d='M18 30c0-7.2 5.8-13 13-13h2c7.2 0 13 5.8 13 13v4c0 7.2-5.8 13-13 13h-2c-7.2 0-13-5.8-13-13v-4z' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><path d='M25 32h14' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.75'/><path d='M29 26c2-2 4-3 6-3s4 1 6 3' fill='none' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.55'/><path d='M29 38c2 2 4 3 6 3s4-1 6-3' fill='none' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.55'/></svg>"
+                    />
+                    Systeme.io
+                  </span>
+
+                  <span class="tool-pill" title="Microsoft Excel">
+                    <img
+                      alt="Excel icon"
+                      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect rx='14' width='64' height='64' fill='%23ffffff'/><rect x='14' y='16' width='36' height='32' rx='10' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><path d='M28 26l8 12M36 26l-8 12' stroke='%230f172a' stroke-width='3' stroke-linecap='round' opacity='.78'/><path d='M38 22h8v20h-8' fill='none' stroke='%230f172a' stroke-opacity='.18'/></svg>"
+                    />
+                    Excel
+                  </span>
+
+                  <span class="tool-pill" title="Microsoft Office">
+                    <img
+                      alt="Microsoft icon"
+                      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect rx='14' width='64' height='64' fill='%23ffffff'/><g opacity='.9'><rect x='16' y='16' width='14' height='14' rx='4' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><rect x='34' y='16' width='14' height='14' rx='4' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><rect x='16' y='34' width='14' height='14' rx='4' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/><rect x='34' y='34' width='14' height='14' rx='4' fill='%23e9eef8' stroke='%230f172a' stroke-opacity='.18'/></g><path d='M18 18h10v10H18zM36 18h10v10H36zM18 36h10v10H18zM36 36h10v10H36z' fill='%230f172a' opacity='.18'/></svg>"
+                    />
+                    Microsoft
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="wrap">
+          <div class="section-head reveal delay-1">
+            <div class="kicker">About</div>
+            <h2>Automation + data accuracy + clean UI</h2>
+            <p class="lead">
+              I build practical systems that reduce manual work and improve reporting:
+              funnels and automations in Systeme.io, plus Excel/Google Sheets solutions
+              for KPI tracking, data validation, quality checks, and monitoring.
+            </p>
+          </div>
+
+          <div class="panel reveal delay-2">
+            <p
+              style="
+                margin: 0;
+                color: var(--muted);
+                font-size: 15px;
+                max-width: 78ch;
+              "
+            >
+              My focus is clarity and reliability—clean layouts, smooth user flows, and
+              automation that keeps your data organized. Whether it’s a VBA macro to speed
+              up reporting, an Apps Script to automate updates and alerts, or a funnel build,
+              I help you run faster with fewer errors.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services">
+        <div class="wrap">
+          <div class="section-head reveal delay-1">
+            <div class="kicker">Services</div>
+            <h2>What I can build</h2>
+            <p class="lead">
+              Balanced support across funnels, automations, and data workflows—simple,
+              modern, and easy to maintain.
+            </p>
+          </div>
+
+          <div class="services-split">
+            <div class="services-grid">
+              <div class="card reveal delay-1">
+                <h3>Systeme.io Funnel Building</h3>
+                <p>
+                  Pages, structure, products, checkout flow, email sequences, and
+                  launch-ready setup.
+                </p>
+              </div>
+
+              <div class="card reveal delay-2">
+                <h3>Automation Setup</h3>
+                <p>
+                  Workflow automation for lead handling, tagging, follow-ups, and delivery
+                  systems.
+                </p>
+              </div>
+
+              <div class="card reveal delay-2">
+                <h3>Excel Macros (VBA) Automation</h3>
+                <p>
+                  Macros to speed up reporting, reduce repetitive tasks, and standardize outputs.
+                </p>
+              </div>
+
+              <div class="card reveal delay-3">
+                <h3>Google Sheets Apps Script</h3>
+                <p>
+                  Automations, data syncing, scheduled triggers, and custom utilities.
+                </p>
+              </div>
+
+              <div class="card reveal delay-2">
+                <h3>Data Validation &amp; Quality Checks</h3>
+                <p>
+                  Rules, checks, and structures to catch errors early and keep datasets clean.
+                </p>
+              </div>
+
+              <div class="card reveal delay-3">
+                <h3>KPI Dashboards &amp; Data Monitoring</h3>
+                <p>
+                  Simple monitoring and KPI views to spot trends and issues quickly.
+                </p>
+              </div>
+
+              <div class="card reveal delay-2" style="grid-column: 1 / -1">
+                <h3>Landing Page UI/UX + Design Support</h3>
+                <p>
+                  Clean layouts and design assets (Canva/Photoshop) with modern spacing and readability.
+                </p>
+              </div>
+            </div>
+
+            <div class="feature-img reveal delay-2" aria-label="Feature preview">
+              <img
+                class="js-drive-img"
+                data-id="1G0HhieKQIaXIcUqIuFfARo7Z4KatcMIt"
+                src="https://drive.google.com/thumbnail?id=1G0HhieKQIaXIcUqIuFfARo7Z4KatcMIt&sz=w2400"
+                alt="Work preview image"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              <div class="feature-caption">Preview</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SAMPLES -->
+      <section id="samples">
+        <div class="wrap">
+          <div class="section-head reveal delay-1">
+            <div class="kicker">Samples</div>
+            <h2>Live examples</h2>
+            <p class="lead">
+              A quick look at real builds: a Systeme.io funnel sample and an Apps Script live report monitoring tool.
+            </p>
+          </div>
+
+          <div class="services-grid samples-grid">
+            <div class="card reveal delay-1">
+              <h3>Systeme.io Funnel Sample</h3>
+              <p>
+                Digital Wealth Academy funnel sample built using Systeme.io.
+              </p>
+              <div class="meta-mini">
+                <span class="tag">Funnel</span>
+                <span class="tag">Systeme.io</span>
+                <span class="tag">UI/UX</span>
+              </div>
+              <div class="actions" style="margin-top: 14px">
+                <a
+                  class="btn primary"
+                  href="https://www.bgcreativesdgt.com/digital-wealth-academy-remastered"
+                  target="_blank"
+                  rel="noopener"
+                  >Open Sample</a
+                >
+              </div>
+            </div>
+
+            <div class="card reveal delay-2">
+              <h3>Apps Script Live Report Monitoring</h3>
+              <p>
+                Attendance monitoring + daily reporting with a custom date selector (live web app).
+              </p>
+              <div class="meta-mini">
+                <span class="tag">Apps Script</span>
+                <span class="tag">Monitoring</span>
+                <span class="tag">Daily Reports</span>
+              </div>
+              <div class="actions" style="margin-top: 14px">
+                <a
+                  class="btn primary"
+                  href="https://script.google.com/macros/s/AKfycbxecFQ63vzy6BwurBnwoN2UYqSHQvB3k9_j8tYPJ1WXZ3LrDX8-T6ElqlGB4I4Pc24r/exec"
+                  target="_blank"
+                  rel="noopener"
+                  >Open Live App</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="wrap">
+          <div class="section-head reveal delay-1">
+            <div class="kicker">Skills</div>
+            <h2>Tools &amp; capabilities</h2>
+            <p class="lead">
+              Focused skills for automation, data quality, KPI monitoring, and clean front-end execution.
+            </p>
+          </div>
+
+          <div class="skills">
+            <div class="skill-group reveal delay-1">
+              <h3>Core</h3>
+              <ul class="skill-list">
+                <li>Automation Workflows</li>
+                <li>Data Validation &amp; Quality Checks</li>
+                <li>KPI Tracking &amp; Data Monitoring</li>
+                <li>Systeme.io Funnel Building</li>
+              </ul>
+            </div>
+
+            <div class="skill-group reveal delay-2">
+              <h3>Web</h3>
+              <ul class="skill-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+              </ul>
+            </div>
+
+            <div class="skill-group reveal delay-2">
+              <h3>Automation &amp; Data</h3>
+              <ul class="skill-list">
+                <li>Excel Macros (VBA)</li>
+                <li>Power Query</li>
+                <li>Google Sheets Apps Script</li>
+              </ul>
+            </div>
+
+            <div class="skill-group reveal delay-3">
+              <h3>Design</h3>
+              <ul class="skill-list">
+                <li>Canva</li>
+                <li>Photoshop</li>
+              </ul>
+            </div>
+
+            <div class="skill-group reveal delay-2" style="grid-column: 1 / -1">
+              <h3>Ops/IT</h3>
+              <ul class="skill-list">
+                <li>Hardware &amp; Software Troubleshooting</li>
+                <li>Data Entry</li>
+                <li>Microsoft Office</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <div class="wrap">
+          <div class="section-head reveal delay-1">
+            <div class="kicker">Experience</div>
+            <h2>Work history</h2>
+            <p class="lead">
+              Operations, IT, and systems roles with a focus on accuracy, reporting, automation, and execution.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <div class="role reveal delay-1">
+              <div class="role-top">
+                <div class="role-title">Report Assistant</div>
+                <div class="role-meta">Sep 2025 – Feb 2026</div>
+              </div>
+              <div class="role-company">ProCast, Inc. — Quezon City</div>
+              <ul>
+                <li>
+                  Validated raw data submitted by on-ground manpower per merchant/day to ensure completeness based on report requirements.
+                </li>
+                <li>
+                  Checked target lists vs. actual submissions to verify timely compliance per merchant.
+                </li>
+                <li>
+                  Coordinated with Data Lead, Operations Lead, and manpower to resolve missing data points (daily follow-ups).
+                </li>
+                <li>
+                  Provided summary lists of recurring non-compliance for evaluation reporting.
+                </li>
+                <li>
+                  Assisted with validation/checking of other assigned raw data or reports as needed.
+                </li>
+              </ul>
+            </div>
+
+            <div class="role reveal delay-2">
+              <div class="role-top">
+                <div class="role-title">Trade Assurance Specialist</div>
+                <div class="role-meta">May 2025 – Aug 2025</div>
+              </div>
+              <div class="role-company">ProCast, Inc. — Quezon City</div>
+              <ul>
+                <li>
+                  Ensured quality engagement with at least 20 merchants/day within assigned areas; adapted to project location changes.
+                </li>
+                <li>
+                  Conducted merchant visits following BCP/SOP while distributing merchandising and terminal accessories.
+                </li>
+                <li>
+                  Maintained KPI targets: 100% availability/usability, 95% visibility, 50% “Perfect Store” implementation.
+                </li>
+                <li>
+                  Ensured 100% daily submission of accurate reports and merchant photos via Google Forms (per merchant).
+                </li>
+                <li>
+                  Provided daily updates in group chats using standard templates with complete photo documentation.
+                </li>
+                <li>
+                  Promoted merchant campaigns and monitored compliance; supported escalation via customer support channels.
+                </li>
+                <li>
+                  Performed basic on-site troubleshooting for terminal devices based on company training.
+                </li>
+              </ul>
+            </div>
+
+            <div class="role reveal delay-2">
+              <div class="role-top">
+                <div class="role-title">Funnel Builder</div>
+                <div class="role-meta">2024 – 2025</div>
+              </div>
+              <div class="role-company">Freelance — Quezon City</div>
+              <ul>
+                <li>
+                  Designed and built high-converting sales funnels for digital products and online businesses.
+                </li>
+                <li>
+                  Created landing pages, opt-in pages, sales pages, and automated email sequences.
+                </li>
+                <li>
+                  Integrated payment gateways, email marketing systems, and automation workflows.
+                </li>
+                <li>
+                  Optimized funnel performance through testing and conversion improvements.
+                </li>
+                <li>
+                  Managed end-to-end funnel setup from strategy and design to automation and launch.
+                </li>
+              </ul>
+            </div>
+
+            <div class="role reveal delay-3">
+              <div class="role-top">
+                <div class="role-title">Laboratory Facilitator</div>
+                <div class="role-meta">2021 – 2023</div>
+              </div>
+              <div class="role-company">ACLC College — Quezon City</div>
+              <ul>
+                <li>
+                  Supervised and assisted students during laboratory activities; ensured proper procedures and safety compliance.
+                </li>
+                <li>
+                  Maintained laboratory equipment, tools, and materials to support academic activities.
+                </li>
+                <li>
+                  Prepared laboratory materials and assisted instructors during practical sessions.
+                </li>
+                <li>
+                  Designed and created social media posts for school activities and announcements.
+                </li>
+                <li>
+                  Managed and updated school social media platforms to improve engagement and visibility.
+                </li>
+              </ul>
+            </div>
+
+            <div class="role reveal delay-2">
+              <div class="role-top">
+                <div class="role-title">IT Staff</div>
+                <div class="role-meta">2019 – 2021</div>
+              </div>
+              <div class="role-company">Filkohayes Services Inc. — Quezon City</div>
+              <ul>
+                <li>
+                  Provided overall IT support including system maintenance, troubleshooting, and network management.
+                </li>
+                <li>
+                  Designed, developed, and maintained the company website with an online medical equipment catalog.
+                </li>
+                <li>
+                  Updated product listings (specs/images) to ensure accurate online information.
+                </li>
+                <li>
+                  Assisted in preparing technical documents for bidding processes.
+                </li>
+                <li>
+                  Set up IT systems and provided technical support during conventions, events, and product demonstrations.
+                </li>
+              </ul>
+            </div>
+
+            <div class="role reveal delay-3">
+              <div class="role-top">
+                <div class="role-title">Data Entry</div>
+                <div class="role-meta">2020 – 3 months</div>
+              </div>
+              <div class="role-company">Wuhan Fiberhomes</div>
+              <ul>
+                <li>Supported data entry tasks with attention to accuracy and completeness.</li>
+              </ul>
+            </div>
+
+            <div class="role reveal delay-2">
+              <div class="role-top">
+                <div class="role-title">Mapping Assistant</div>
+                <div class="role-meta">2018 – 2019</div>
+              </div>
+              <div class="role-company">Prime@Technology Specialists, Inc. — Quezon City</div>
+              <ul>
+                <li>
+                  Assisted in collecting, analyzing, and updating geographic/spatial data using mapping software.
+                </li>
+                <li>
+                  Supported map production and data entry; ensured accuracy of GIS databases.
+                </li>
+              </ul>
+            </div>
+
+            <div class="role reveal delay-3">
+              <div class="role-top">
+                <div class="role-title">IT Assistant</div>
+                <div class="role-meta">Contract — 3 months</div>
+              </div>
+              <div class="role-company">MDI Company — Quezon City</div>
+              <ul>
+                <li>
+                  Upgraded computers, installed OS and required software, and configured network connectivity to the server.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="wrap">
+          <div class="section-head reveal delay-1">
+            <div class="kicker">Contact</div>
+            <h2>Let’s build your system</h2>
+            <p class="lead">
+              Funnels, automation, reporting macros, KPI monitoring, and data quality—ready when you are.
+            </p>
+          </div>
+
+          <div class="contact-card reveal delay-2">
+            <div class="contact-actions">
+              <a class="btn primary" href="mailto:bienangelomc@gmail.com">Email</a>
+              <a class="btn" href="tel:+639062081150">Call</a>
+              <a
+                class="btn"
+                href="https://www.bgcreativesdgt.com/funnel-service"
+                target="_blank"
+                rel="noopener"
+                >Website</a
+              >
+            </div>
+
+            <div
+              style="
+                border-top: 1px solid var(--line);
+                padding-top: 14px;
+                color: var(--muted);
+                font-size: 14px;
+              "
+            >
+              <div>
+                <strong style="color: var(--text); font-weight: 650">Email:</strong>
+                <a href="mailto:bienangelomc@gmail.com">bienangelomc@gmail.com</a>
+              </div>
+              <div>
+                <strong style="color: var(--text); font-weight: 650">Phone:</strong>
+                <a href="tel:+639062081150">+63 906 208 1150</a>
+              </div>
+              <div>
+                <strong style="color: var(--text); font-weight: 650">Website:</strong>
+                <a
+                  href="https://www.bgcreativesdgt.com/funnel-service"
+                  target="_blank"
+                  rel="noopener"
+                  >www.bgcreativesdgt.com/funnel-service</a
+                >
+              </div>
+              <div>
+                <strong style="color: var(--text); font-weight: 650">Location:</strong>
+                Sitio Samasa, Pila-Pila Binangonan Rizal
+              </div>
+            </div>
+          </div>
+
+          <div class="foot">
+            <div class="wrap" style="padding: 0">
+              <span>
+                © <span id="year"></span> Bienvenido Casimiro. Built for Systeme.io.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        // Mobile nav toggle
+        const nav = document.getElementById("topNav");
+        const toggle = document.getElementById("navToggle");
+        const links = nav ? nav.querySelectorAll(".nav-links a") : [];
+
+        function closeNav() {
+          if (!nav || !toggle) return;
+          nav.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        }
+
+        if (toggle) {
+          toggle.addEventListener("click", () => {
+            const open = nav.classList.toggle("is-open");
+            toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          });
+        }
+
+        links.forEach((a) => {
+          a.addEventListener("click", () => {
+            if (
+              window.matchMedia &&
+              window.matchMedia("(max-width: 680px)").matches
+            ) {
+              closeNav();
+            }
+          });
+        });
+
+        // Google Drive image reliability:
+        // Try multiple sources (thumbnail -> uc view -> docs uc -> googleusercontent).
+        function setFallbackChain(imgEl, id) {
+          let tried = 0;
+          const sources = [
+            `https://drive.google.com/thumbnail?id=${encodeURIComponent(
+              id
+            )}&sz=w2400`,
+            `https://drive.google.com/uc?export=view&id=${encodeURIComponent(
+              id
+            )}`,
+            `https://docs.google.com/uc?export=view&id=${encodeURIComponent(id)}`,
+            `https://lh3.googleusercontent.com/d/${encodeURIComponent(
+              id
+            )}=w2400`,
+          ];
+
+          const showFallbackMessage = () => {
+            const wrap = imgEl?.parentElement;
+            const msg = wrap ? wrap.querySelector(".img-fallback") : null;
+            if (msg) msg.style.opacity = "1";
+          };
+
+          imgEl.addEventListener("error", () => {
+            tried += 1;
+            if (tried < sources.length) {
+              imgEl.src = sources[tried];
+            } else {
+              showFallbackMessage();
+            }
+          });
+
+          if (!imgEl.getAttribute("src")) imgEl.src = sources[0];
+        }
+
+        document.querySelectorAll(".js-drive-img").forEach((img) => {
+          const id = img.getAttribute("data-id");
+          if (id) setFallbackChain(img, id);
+        });
+
+        // Modern scroll reveal + hero shimmer trigger
+        const reduceMotion =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        const items = document.querySelectorAll(".reveal");
+
+        if (!reduceMotion && "IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries, obs) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-in");
+
+                  // Trigger shimmer for hero card only
+                  if (entry.target.classList.contains("hero-card")) {
+                    entry.target.classList.add("is-in");
+                  }
+
+                  obs.unobserve(entry.target);
+                }
+              });
+            },
+            { root: null, rootMargin: "0px 0px -12% 0px", threshold: 0.12 }
+          );
+
+          items.forEach((el) => io.observe(el));
+        } else {
+          items.forEach((el) => el.classList.add("is-in"));
+        }
+
+        // Ensure hero shimmer triggers even if already in view at load
+        const heroCard = document.querySelector(".hero-card.reveal");
+        if (heroCard) heroCard.classList.add("is-in");
+
+        // Current year
+        const yearEl = document.getElementById("year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // Smooth anchor offset (skip if reduced motion)
+        if (!reduceMotion) {
+          const header = document.getElementById("topNav");
+          const headerH = header ? header.offsetHeight : 0;
+
+          const scrollToHash = (hash) => {
+            const target = document.querySelector(hash);
+            if (!target) return;
+            const top =
+              target.getBoundingClientRect().top +
+              window.pageYOffset -
+              (headerH + 10);
+            window.scrollTo({ top, behavior: "smooth" });
+          };
+
+          document.addEventListener("click", (e) => {
+            const a = e.target?.closest?.('a[href^="#"]');
+            if (!a) return;
+
+            const href = a.getAttribute("href");
+            if (!href || href === "#") return;
+
+            if (document.querySelector(href)) {
+              e.preventDefault();
+              scrollToHash(href);
+              history.pushState(null, "", href);
+            }
+          });
+
+          if (location.hash && document.querySelector(location.hash)) {
+            setTimeout(() => scrollToHash(location.hash), 0);
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
